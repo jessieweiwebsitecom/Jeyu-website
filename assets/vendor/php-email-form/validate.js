@@ -103,8 +103,7 @@
     const endOfSeason = new Date(now.getFullYear(), seasonStartMonth + 3, 1);
     const seasonProgress = ((now - startOfSeason) / (endOfSeason - startOfSeason)) * 100;
 
-    
-    
+
 	document.getElementById("weekProgressIcon").style.left = `${weekProgress}%`;
     document.getElementById("weekProgressVal").innerText = `${weekProgress.toFixed(1)}%`;
     document.getElementById("weekProgressBar").style.width = `${weekProgress}%`;
