@@ -102,21 +102,21 @@
     const startOfSeason = new Date(now.getFullYear(), seasonStartMonth, 1);
     const endOfSeason = new Date(now.getFullYear(), seasonStartMonth + 3, 1);
     const seasonProgress = ((now - startOfSeason) / (endOfSeason - startOfSeason)) * 100;
-	
-	 // 計算 icon 要移動的位置
-     const containerWidth = progressContainer.offsetWidth;
-     const iconLeft = (containerWidth * safeProgress) / 100;
-     progressIcon.style.left = `${iconLeft}px`;
 
+    
+    
+	document.getElementById("weekProgressIcon").style.left = `${weekProgress}%`;
     document.getElementById("weekProgressVal").innerText = `${weekProgress.toFixed(1)}%`;
     document.getElementById("weekProgressBar").style.width = `${weekProgress}%`;
     document.getElementById("weekProgressBar").setAttribute('aria-valuenow', weekProgress.toFixed(1));
 
-
+    
+	document.getElementById("seasonProgressIcon").style.left = `${seasonProgress}%`;
     document.getElementById("seasonProgressVal").innerText = `${seasonProgress.toFixed(1)}%`;
     document.getElementById("seasonProgressBar").style.width = `${seasonProgress}%`;
     document.getElementById("seasonProgressBar").setAttribute('aria-valuenow', seasonProgress.toFixed(1));
 
+    document.getElementById("yearProgressIcon").style.left = `${yearProgress}%`;
     document.getElementById("yearProgressVal").innerText = `${yearProgress.toFixed(1)}%`;
     document.getElementById("yearProgressBar").style.width = `${yearProgress}%`;
     document.getElementById("yearProgressBar").setAttribute('aria-valuenow', yearProgress.toFixed(1));

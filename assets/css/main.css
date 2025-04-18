@@ -704,7 +704,7 @@ section,
 .icon-indicator {
   position: absolute;
   top: 50%;
-  transform: translate(-50%, -120%); /* icon 往左一點、往上浮出來 */
+  transform: translate(-50%, -50%); /* icon 往左一點、往上浮出來 */
   color: var(--contrast-color);
   font-size: 16px;
   transition: left 0.5s ease-out;
