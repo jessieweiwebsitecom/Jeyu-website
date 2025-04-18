@@ -83,3 +83,41 @@
   }
 
 })();
+
+ function updateTimeProgress() {
+    const now = new Date();
+    const startOfYear = new Date(now.getFullYear(), 0, 1); //0是1月
+    const endOfYear = new Date(now.getFullYear() + 1, 0, 1);
+    const yearProgress = ((now - startOfYear) / (endOfYear - startOfYear)) * 100;
+
+    const startOfWeek = new Date(now);
+    const day = startOfWeek.getDay();
+    const diffToMonday = (day === 0 ? -6 : 1) - day;
+    startOfWeek.setDate(startOfWeek.getDate() + diffToMonday);
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(endOfWeek.getDate() + 7);
+    const weekProgress = ((now - startOfWeek) / (endOfWeek - startOfWeek)) * 100;
+
+    const seasonStartMonth = Math.floor(now.getMonth() / 3) * 3;
+    const startOfSeason = new Date(now.getFullYear(), seasonStartMonth, 1);
+    const endOfSeason = new Date(now.getFullYear(), seasonStartMonth + 3, 1);
+    const seasonProgress = ((now - startOfSeason) / (endOfSeason - startOfSeason)) * 100;
+	
+	 // 計算 icon 要移動的位置
+     const containerWidth = progressContainer.offsetWidth;
+     const iconLeft = (containerWidth * safeProgress) / 100;
+     progressIcon.style.left = `${iconLeft}px`;
+
+    document.getElementById("weekProgressVal").innerText = `${weekProgress.toFixed(1)}%`;
+    document.getElementById("weekProgressBar").style.width = `${weekProgress}%`;
+    document.getElementById("weekProgressBar").setAttribute('aria-valuenow', weekProgress.toFixed(1));
+
+
+    document.getElementById("seasonProgressVal").innerText = `${seasonProgress.toFixed(1)}%`;
+    document.getElementById("seasonProgressBar").style.width = `${seasonProgress}%`;
+    document.getElementById("seasonProgressBar").setAttribute('aria-valuenow', seasonProgress.toFixed(1));
+
+    document.getElementById("yearProgressVal").innerText = `${yearProgress.toFixed(1)}%`;
+    document.getElementById("yearProgressBar").style.width = `${yearProgress}%`;
+    document.getElementById("yearProgressBar").setAttribute('aria-valuenow', yearProgress.toFixed(1));
+  }
