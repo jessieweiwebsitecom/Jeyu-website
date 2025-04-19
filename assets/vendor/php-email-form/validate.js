@@ -94,6 +94,7 @@
     const day = startOfWeek.getDay();
     const diffToMonday = (day === 0 ? -6 : 1) - day;
     startOfWeek.setDate(startOfWeek.getDate() + diffToMonday);
+	startOfWeek.setHours(0, 0, 0, 0); // 設定為星期一的零點
     const endOfWeek = new Date(startOfWeek);
     endOfWeek.setDate(endOfWeek.getDate() + 7);
     const weekProgress = ((now - startOfWeek) / (endOfWeek - startOfWeek)) * 100;
