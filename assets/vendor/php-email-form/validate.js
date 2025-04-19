@@ -90,14 +90,11 @@
     const endOfYear = new Date(now.getFullYear() + 1, 0, 1);
     const yearProgress = ((now - startOfYear) / (endOfYear - startOfYear)) * 100;
 
-    const startOfWeek = new Date(now);
-    const day = startOfWeek.getDay();
-    const diffToMonday = (day === 0 ? -6 : 1) - day;
-    startOfWeek.setDate(startOfWeek.getDate() + diffToMonday);
-	startOfWeek.setHours(0, 0, 0, 0); // 設定為星期一的零點
-    const endOfWeek = new Date(startOfWeek);
-    endOfWeek.setDate(endOfWeek.getDate() + 7);
-    const weekProgress = ((now - startOfWeek) / (endOfWeek - startOfWeek)) * 100;
+    const nowDay = now.getDay();
+	let dayOfWeek;
+	if (nowDay === 0)    dayOfWeek = 7;		
+	else  dayOfWeek = nowDay;
+    const weekProgress = (dayOfWeek / 7) * 100;
 
     const seasonStartMonth = Math.floor(now.getMonth() / 3) * 3;
     const startOfSeason = new Date(now.getFullYear(), seasonStartMonth, 1);
